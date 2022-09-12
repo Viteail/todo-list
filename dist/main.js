@@ -1,0 +1,1 @@
+(()=>{"use strict";const e=document.querySelector("#wrapper"),t=document.createElement("div");(e=>{const t=document.createElement("div");t.classList.add("header"),t.textContent="TODO LIST",e.appendChild(t)})(e),((e,t)=>{t.classList.add("main"),e.appendChild(t)})(e,t),(e=>{const t=document.createElement("div");t.classList.add("sidebar"),e.appendChild(t)})(t)})();
