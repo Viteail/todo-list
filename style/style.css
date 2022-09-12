@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+:root {
+    --blue-color: #00457E;
+    --dark-blue-color: #02315E;
+    --light-blue-color: #2F70AF;
+    --95-light-blue-color: #ebf2fa;
+    --pink-color: #B9848C;
+    --purple-color: #806491;
+    --white-color: #ffffff;
+}
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(fonts/Roboto-Bold.ttf);
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    font-family: Roboto-Bold;
+    font-size: 1.8rem;
+    z-index: 1;
+    padding: 20px;
+    color: var(--white-color);
+    background-color: var(--light-blue-color);
+    box-shadow: 0px 2px 2px var(--blue-color);
+}
+
+.main {
+    height: 100%;
+}
+
+.sidebar {
+    width: 300px;
+    height: 100%;
+    background-color: var(--95-light-blue-color);
+}
