@@ -1,50 +1,91 @@
 body {
-    margin: 0;
-    min-height: 100vh;
+  margin: 0;
+  min-height: 100vh;
 }
 
 :root {
-    --blue-color: #00457E;
-    --dark-blue-color: #02315E;
-    --light-blue-color: #2F70AF;
-    --95-light-blue-color: #ebf2fa;
-    --pink-color: #B9848C;
-    --purple-color: #806491;
-    --white-color: #ffffff;
+  --blue-color: #00457e;
+  --dark-blue-color: #02315e;
+  --light-blue-color: #2f70af;
+  --95-light-blue-color: #ebf2fa;
+  --90-light-blue-color: #d7e6f4;
+  --pink-color: #b9848c;
+  --purple-color: #806491;
+  --white-color: #ffffff;
 }
 
 @font-face {
-    font-family: Roboto-Regular;
-    src: url(fonts/Roboto-Regular.ttf);
+  font-family: Roboto-Regular;
+  src: url(fonts/Roboto-Regular.ttf);
 }
 
 @font-face {
-    font-family: Roboto-Bold;
-    src: url(fonts/Roboto-Bold.ttf);
+  font-family: Roboto-Bold;
+  src: url(fonts/Roboto-Bold.ttf);
 }
 
 #wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header {
-    font-family: Roboto-Bold;
-    font-size: 1.8rem;
-    z-index: 1;
-    padding: 20px;
-    color: var(--white-color);
-    background-color: var(--light-blue-color);
-    box-shadow: 0px 2px 2px var(--blue-color);
+  font-family: Roboto-Bold;
+  font-size: 1.8rem;
+  z-index: 1;
+  padding: 20px;
+  color: var(--white-color);
+  background-color: var(--light-blue-color);
+  box-shadow: 0px 2px 2px var(--blue-color);
 }
 
 .main {
-    height: 100%;
+  height: 100%;
 }
 
 .sidebar {
-    width: 300px;
-    height: 100%;
-    background-color: var(--95-light-blue-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  gap: 5px;
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+  background-color: var(--95-light-blue-color);
+}
+
+.sidebar > button {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row-reverse;
+  font-family: Roboto-Regular;
+  cursor: pointer;
+  font-size: 1.1rem;
+  gap: 5px;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  width: 100%;
+  background-color: var(--95-light-blue-color);
+}
+
+.sidebar > button:hover {
+  background-color: var(--90-light-blue-color);
+}
+
+.sidebar > button > img {
+  width: 24px;
+}
+
+.content {
+  height: 100%;
+  margin-left: 290px;
+}
+
+.bigText {
+  font-family: Roboto-Bold;
+  font-size: 1.5rem;
 }
