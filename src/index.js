@@ -1,6 +1,7 @@
 import { createHeader } from './modules/header.mjs';
 import { createMain } from './modules/main.mjs';
-import { createSideBar } from './modules/sidebar.mjs';
+import { createSidebar } from './modules/sidebar.mjs';
+import { createContent } from './modules/content.mjs';
 
 const wrapper = document.querySelector('#wrapper');
 
@@ -10,4 +11,6 @@ createHeader(wrapper);
 
 createMain(wrapper, main);
 
-createSideBar(main);
+createSidebar(main);
+
+createContent(main);
