@@ -9,6 +9,7 @@ body {
   --light-blue-color: #2f70af;
   --95-light-blue-color: #ebf2fa;
   --90-light-blue-color: #d7e6f4;
+  --85-light-blue-color: #c3d9ef;
   --pink-color: #b9848c;
   --purple-color: #806491;
   --white-color: #ffffff;
@@ -83,9 +84,19 @@ body {
 .content {
   height: 100%;
   margin-left: 290px;
+  padding: 0px 150px;
 }
 
-.bigText {
+.bigtext {
   font-family: Roboto-Bold;
   font-size: 1.5rem;
+}
+
+button.active {
+  font-weight: 800;
+  background-color: var(--85-light-blue-color);
+}
+
+.content > p {
+  margin: 0;
 }
