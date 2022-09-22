@@ -1,3 +1,9 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -10,6 +16,7 @@ body {
   --95-light-blue-color: #ebf2fa;
   --90-light-blue-color: #d7e6f4;
   --85-light-blue-color: #c3d9ef;
+  --80-light-blue-color: #aeccea;
   --pink-color: #b9848c;
   --purple-color: #806491;
   --white-color: #ffffff;
@@ -42,6 +49,7 @@ body {
 }
 
 .main {
+  display: flex;
   height: 100%;
 }
 
@@ -49,10 +57,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
   gap: 5px;
-  width: 250px;
-  height: 100%;
+  margin: 0px;
+  width: 300px;
   padding: 20px;
   background-color: var(--95-light-blue-color);
 }
@@ -73,7 +80,8 @@ body {
   background-color: var(--95-light-blue-color);
 }
 
-.sidebar > button:hover {
+.sidebar > button:hover,
+.sidebar > button:hover > button {
   background-color: var(--90-light-blue-color);
 }
 
@@ -82,9 +90,7 @@ body {
 }
 
 .content {
-  height: 100%;
-  margin-left: 290px;
-  padding: 0px 150px;
+  display: flex;
 }
 
 .bigtext {
@@ -92,11 +98,75 @@ body {
   font-size: 1.5rem;
 }
 
-button.active {
+button.active,
+button.active > button {
   font-weight: 800;
   background-color: var(--85-light-blue-color);
 }
 
 .content > p {
   margin: 0;
+}
+
+.wrapper-projectcreator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  width: 100%;
+  min-height: 75px;
+  border-radius: 5px;
+  background-color: var(--90-light-blue-color);
+}
+
+.input-projectcreator {
+  font-family: Roboto-Regular;
+  font-size: 1.1rem;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--80-light-blue-color);
+  background-color: var(--85-light-blue-color);
+}
+
+.input-projectcreator:focus {
+  outline: none;
+}
+
+.wrapper-btns-projectcreator {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.wrapper-btns-projectcreator > button {
+  cursor: pointer;
+  border: none;
+  padding: 9.5px 0px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.btn-adder {
+  background-color: var(--80-light-blue-color);
+}
+
+.btn-remove {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+  margin-left: auto;
+  background-color: var(--95-light-blue-color);
+}
+
+.btn-remove > img {
+  width: 24px;
 }

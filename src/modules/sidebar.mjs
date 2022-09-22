@@ -1,4 +1,5 @@
 import { toggleButton } from './togglebutton.mjs';
+import { createProjectCreator } from './projectcreator.mjs';
 
 export const createSidebar = (main) => {
   const sidebar = document.createElement('div');
@@ -38,16 +39,4 @@ const createParaProject = (sidebar) => {
   paraProject.textContent = 'Projects';
 
   sidebar.appendChild(paraProject);
-};
-
-const createProjectCreator = (sidebar) => {
-  const iconPlus = document.createElement('img');
-  iconPlus.src = '../../dist/style/images/plus.svg';
-
-  const projectCreator = document.createElement('button');
-  projectCreator.classList.add('btn-addproject');
-  projectCreator.textContent = 'Add Project';
-  projectCreator.appendChild(iconPlus);
-
-  sidebar.appendChild(projectCreator);
 };

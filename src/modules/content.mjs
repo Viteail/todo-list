@@ -1,3 +1,5 @@
+import { pageStorage } from "./storage.mjs";
+
 export const createContent = (currentActiveButton, main) => {
   const content = document.createElement('div');
   content.classList.add('content');
@@ -10,7 +12,7 @@ const createParaProjectName = (content, currentActiveButton) => {
   let projectName = currentActiveButton.textContent;
 
   const paraProjectName = document.createElement('p');
-  paraProjectName.textContent = projectName;
+  paraProjectName.textContent = currentActiveButton.textContent;
   paraProjectName.classList.add('bigtext');
   content.appendChild(paraProjectName);
 };
