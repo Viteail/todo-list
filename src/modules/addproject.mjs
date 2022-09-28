@@ -18,7 +18,7 @@ const createRemoveButton = (newProject) => {
   iconRemove.src = '/dist/style/images/remove.svg';
 
   const removeBtn = document.createElement('button');
-  removeBtn.classList.add('btn-remove');
+  removeBtn.classList.add('btn-remove-project');
   newProject.appendChild(removeBtn);
 
   removeBtn.appendChild(iconRemove);

@@ -1,4 +1,4 @@
-import { pageStorage } from "./storage.mjs";
+import { createTaskListDiv } from './tasklistdiv.mjs';
 
 export const createContent = (currentActiveButton, main) => {
   const content = document.createElement('div');
@@ -6,6 +6,7 @@ export const createContent = (currentActiveButton, main) => {
   main.appendChild(content);
 
   createParaProjectName(content, currentActiveButton);
+  createTaskListDiv(content);
 };
 
 const createParaProjectName = (content, currentActiveButton) => {

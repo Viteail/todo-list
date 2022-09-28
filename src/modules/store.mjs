@@ -1,4 +1,3 @@
-// import { pageStorage } from './storage.mjs';
+import { pages } from './pages.mjs';
 
-// export const storePage = (currentActiveButton) => {
-// };
+export const storeToPages = (id, name, list) => {};

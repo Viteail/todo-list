@@ -18,8 +18,9 @@ const createDiv = (sidebar, projectCreator) => {
 
 const createInput = (div) => {
   const input = document.createElement('input');
-  input.maxLength = '15';
   input.classList.add('input-projectcreator');
+  input.maxLength = '15';
+  input.placeholder = 'Project name...'
   div.appendChild(input);
 };
 
@@ -33,7 +34,7 @@ const createWrapper = (div, projectCreator, sidebar) => {
 
 const createAddButton = (wrapper, div, projectCreator, sidebar) => {
   const buttonAdder = document.createElement('button');
-  buttonAdder.classList.add('btn-adder');
+  buttonAdder.classList.add('btn-adder-projectcreator');
   buttonAdder.textContent = 'Add';
   wrapper.appendChild(buttonAdder);
 
@@ -48,7 +49,7 @@ const createAddButton = (wrapper, div, projectCreator, sidebar) => {
 
 const createCloseButton = (wrapper, div, projectCreator) => {
   const buttonCloser = document.createElement('button');
-  buttonCloser.classList.add('btn-closer');
+  buttonCloser.classList.add('btn-closer-projectcreator');
   buttonCloser.textContent = 'Close';
   wrapper.appendChild(buttonCloser);
 
