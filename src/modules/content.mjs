@@ -1,4 +1,5 @@
 import { createTaskListDiv } from './tasklistdiv.mjs';
+import { pages } from './pages.mjs';
 
 export const createContent = (currentActiveButton, main) => {
   const content = document.createElement('div');
@@ -10,10 +11,13 @@ export const createContent = (currentActiveButton, main) => {
 };
 
 const createParaProjectName = (content, currentActiveButton) => {
-  let projectName = currentActiveButton.textContent;
+  let firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
+  let currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
+
+  let projectName = currPage.name;
 
   const paraProjectName = document.createElement('p');
-  paraProjectName.textContent = currentActiveButton.textContent;
+  paraProjectName.textContent = projectName;
   paraProjectName.classList.add('bigtext');
   content.appendChild(paraProjectName);
 };
