@@ -1,7 +1,5 @@
 import { getCurrentActiveButton } from './getcurrentactivebtn.mjs';
 import { removeContent } from './removecontent.mjs';
-import { storeToPages } from './store.mjs';
-import { pages } from './pages.mjs';
 
 export const toggleButton = (sidebar, defaultActiveButton, main) => {
   defaultActiveButton.classList.add('active');
@@ -9,8 +7,11 @@ export const toggleButton = (sidebar, defaultActiveButton, main) => {
   getCurrentActiveButton(currentButton, main);
 
   sidebar.addEventListener('click', (e) => {
-    if (e.target.classList.contains('project') && currentButton !== e.target) {
-      removeClassActive(currentButton);
+    if (
+      e.target.classList.contains('project') &&
+      e.target.classList.contains('active') === false
+    ) {
+      removeClassActiveFromBtns(sidebar);
       e.target.classList.add('active');
       currentButton = e.target;
       removeContent(main);
@@ -19,6 +20,7 @@ export const toggleButton = (sidebar, defaultActiveButton, main) => {
   });
 };
 
-const removeClassActive = (prevButton) => {
-  prevButton.classList.remove('active');
+const removeClassActiveFromBtns = (sidebar) => {
+  const everyChildElements = sidebar.childNodes;
+  everyChildElements.forEach((element) => element.classList.remove('active'));
 };
