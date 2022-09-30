@@ -1,5 +1,6 @@
 import { removeProjectCreatorDiv } from './removeprojectcreatordiv.mjs';
 import { removeProject } from './removeproject.mjs';
+import { storeToPages } from './store.mjs';
 
 export const addProject = (sidebar, inputValue, div, projectCreator) => {
   const newProject = document.createElement('button');
@@ -11,6 +12,8 @@ export const addProject = (sidebar, inputValue, div, projectCreator) => {
   createRemoveButton(newProject);
 
   removeProjectCreatorDiv(projectCreator, div);
+
+  storeToPages(newProject.className, newProject.textContent)
 };
 
 const createRemoveButton = (newProject) => {

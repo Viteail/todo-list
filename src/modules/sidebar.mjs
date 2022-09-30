@@ -1,5 +1,6 @@
 import { toggleButton } from './togglebutton.mjs';
 import { createProjectCreator } from './projectcreator.mjs';
+import { storeToPages } from './store.mjs';
 
 export const createSidebar = (main) => {
   const sidebar = document.createElement('div');
@@ -26,7 +27,9 @@ const createSidebarButtons = (sidebar, main) => {
   buttonWeek.appendChild(iconCalendarWeek);
 
   sidebar.appendChild(buttonToday);
+  storeToPages(buttonToday.className, buttonToday.textContent);
   sidebar.appendChild(buttonWeek);
+  storeToPages(buttonWeek.className, buttonWeek.textContent);
 
   createParaProject(sidebar);
   createProjectCreator(sidebar);
