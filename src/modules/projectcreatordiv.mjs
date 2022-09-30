@@ -1,5 +1,6 @@
 import { addProject } from './addproject.mjs';
 import { removeProjectCreatorDiv } from './removeprojectcreatordiv.mjs';
+import { pages } from './pages.mjs';
 
 export const createProjectCreatorDiv = (projectCreator, sidebar) => {
   projectCreator.addEventListener('click', () => {
@@ -20,7 +21,7 @@ const createInput = (div) => {
   const input = document.createElement('input');
   input.classList.add('input-projectcreator');
   input.maxLength = '15';
-  input.placeholder = 'Project name...'
+  input.placeholder = 'Project name...';
   div.appendChild(input);
 };
 
@@ -40,9 +41,12 @@ const createAddButton = (wrapper, div, projectCreator, sidebar) => {
 
   buttonAdder.addEventListener('click', () => {
     let inputValue = div.firstChild.value;
+    let availableName = pages.find((page) => page.name === inputValue);
 
-    if (inputValue.length !== 0) {
+    if (inputValue.length !== 0 && availableName === undefined) {
       addProject(sidebar, inputValue, div, projectCreator);
+    } else {
+      alert('Already exist name');
     }
   });
 };
