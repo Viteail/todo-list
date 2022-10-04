@@ -1,6 +1,9 @@
 import { removeTaskCreatorDiv } from './removetaskcreatordiv.mjs';
 import { removeTask } from './removetask.mjs';
 import { checkListTask } from './checklist.mjs';
+import { pages } from './pages.mjs';
+import { storeTaskToPage } from './store.mjs';
+import { editTask } from './edittask.mjs';
 
 export const addTask = (taskListDiv, taskCreatorDiv, inputValue) => {
   const newTask = document.createElement('div');
@@ -10,9 +13,12 @@ export const addTask = (taskListDiv, taskCreatorDiv, inputValue) => {
 
   createCheckListButton(newTask);
   createTaskText(newTask, inputValue);
+  createEditTaskBtn(newTask);
   createRemoveButton(newTask);
 
   removeTaskCreatorDiv(taskCreatorDiv);
+
+  getCurrentActiveButton(taskListDiv, inputValue);
 };
 
 const createCheckListButton = (task) => {
@@ -32,6 +38,19 @@ const createTaskText = (task, inputValue) => {
   task.appendChild(taskText);
 };
 
+const createEditTaskBtn = (task) => {
+  const iconEdit = document.createElement('img');
+  iconEdit.src = '/dist/style/images/pencil.svg';
+
+  const editTaskBtn = document.createElement('button');
+  editTaskBtn.classList.add('btn-edit-task');
+  task.appendChild(editTaskBtn);
+
+  editTaskBtn.appendChild(iconEdit);
+
+  editTask(editTaskBtn, task);
+};
+
 const createRemoveButton = (task) => {
   const iconRemove = document.createElement('img');
   iconRemove.src = '/dist/style/images/remove.svg';
@@ -44,4 +63,23 @@ const createRemoveButton = (task) => {
   removeBtn.appendChild(iconRemove);
 
   removeBtn.addEventListener('click', () => removeTask(task));
+};
+
+const getCurrentActiveButton = (taskListDiv, inputValue) => {
+  const content = taskListDiv.parentElement;
+  const main = content.parentElement;
+  const sidebar = main.firstChild;
+  const everyChildElements = sidebar.childNodes;
+  everyChildElements.forEach((element) => {
+    if (element.classList.contains('active')) {
+      getCurrentPage(element, inputValue);
+    }
+  });
+};
+
+const getCurrentPage = (currentActiveButton, inputValue) => {
+  const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
+  const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
+  
+  storeTaskToPage(currPage, false, inputValue);
 };

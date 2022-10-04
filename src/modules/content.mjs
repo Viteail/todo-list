@@ -6,14 +6,14 @@ export const createContent = (currentActiveButton, main) => {
   content.classList.add('content');
   main.appendChild(content);
 
-  createParaProjectName(content, currentActiveButton);
+  const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
+  const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
+
+  createParaProjectName(content, currPage);
   createTaskListDiv(content);
 };
 
-const createParaProjectName = (content, currentActiveButton) => {
-  let firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
-  let currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
-
+const createParaProjectName = (content, currPage) => {
   let projectName = currPage.name;
 
   const paraProjectName = document.createElement('p');

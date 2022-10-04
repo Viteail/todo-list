@@ -295,3 +295,18 @@ input:focus {
 .btn-remove-task > img {
   width: 24px;
 }
+
+.btn-edit-task {
+  display: flex;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--90-light-blue-color);
+}
+
+.btn-edit-task > img {
+  width: 24px;
+}
