@@ -1,11 +1,23 @@
-export const checkListTask = (checkListBtn) => {
+import { updateTask } from './store.mjs';
+
+export const checklistTask = (checklistBtn, inputValue, currPage) => {
   const iconCheck = document.createElement('img');
   iconCheck.src = '/dist/style/images/check.svg';
-  checkListBtn.addEventListener('click', () => {
-    if (checkListBtn.firstChild === null) {
-      checkListBtn.appendChild(iconCheck);
+
+  checklistBtn.addEventListener('click', () => {
+    if (checklistBtn.firstChild === null) {
+      checklistBtn.appendChild(iconCheck);
+      checklistBtn.value = true;
+      getTask(checklistBtn, inputValue, currPage);
     } else {
-      checkListBtn.removeChild(checkListBtn.firstChild);
+      checklistBtn.removeChild(checklistBtn.firstChild);
+      checklistBtn.value = false;
+      getTask(checklistBtn, inputValue, currPage);
     }
   });
+};
+
+const getTask = (checklistBtn, inputValue, currPage) => {
+  const task = currPage.list.find((task) => task.text === inputValue);
+  updateTask(task, checklistBtn.value);
 };

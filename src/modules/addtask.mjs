@@ -1,8 +1,8 @@
 import { removeTaskCreatorDiv } from './removetaskcreatordiv.mjs';
 import { removeTask } from './removetask.mjs';
-import { checkListTask } from './checklist.mjs';
+import { checklistTask } from './checklist.mjs';
 import { pages } from './pages.mjs';
-import { storeTaskToPage } from './store.mjs';
+import { storeTaskToPage, updateTask } from './store.mjs';
 import { editTask } from './edittask.mjs';
 
 export const addTask = (taskListDiv, taskCreatorDiv, inputValue) => {
@@ -11,23 +11,22 @@ export const addTask = (taskListDiv, taskCreatorDiv, inputValue) => {
 
   taskListDiv.appendChild(newTask);
 
-  createCheckListButton(newTask);
+  createChecklistButton(newTask, inputValue);
   createTaskText(newTask, inputValue);
   createEditTaskBtn(newTask);
   createRemoveButton(newTask);
 
   removeTaskCreatorDiv(taskCreatorDiv);
 
-  getCurrentActiveButton(taskListDiv, inputValue);
+  getCurrentActiveButton(taskListDiv, inputValue, newTask);
 };
 
-const createCheckListButton = (task) => {
-  const checkListBtn = document.createElement('button');
-  checkListBtn.classList.add('btn-checklist');
+const createChecklistButton = (task, inputValue) => {
+  const checklistBtn = document.createElement('button');
+  checklistBtn.classList.add('btn-checklist');
+  checklistBtn.value = false;
 
-  task.appendChild(checkListBtn);
-
-  checkListTask(checkListBtn);
+  task.appendChild(checklistBtn);
 };
 
 const createTaskText = (task, inputValue) => {
@@ -65,21 +64,25 @@ const createRemoveButton = (task) => {
   removeBtn.addEventListener('click', () => removeTask(task));
 };
 
-const getCurrentActiveButton = (taskListDiv, inputValue) => {
+const getCurrentActiveButton = (taskListDiv, inputValue, task) => {
   const content = taskListDiv.parentElement;
   const main = content.parentElement;
   const sidebar = main.firstChild;
   const everyChildElements = sidebar.childNodes;
   everyChildElements.forEach((element) => {
     if (element.classList.contains('active')) {
-      getCurrentPage(element, inputValue);
+      getCurrentPage(element, inputValue, task);
     }
   });
 };
 
-const getCurrentPage = (currentActiveButton, inputValue) => {
+const getCurrentPage = (currentActiveButton, inputValue, task) => {
   const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
   const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
   
   storeTaskToPage(currPage, false, inputValue);
+  
+  const checklistBtn = task.firstChild;
+
+  checklistTask(checklistBtn, inputValue, currPage)
 };
