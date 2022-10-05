@@ -44,7 +44,8 @@ const createAddButton = (wrapper, div, taskListDiv) => {
     let inputValue = div.firstChild.value;
 
     if (inputValue.length !== 0) {
-      addTask(taskListDiv, div, inputValue);
+      addTask(taskListDiv, inputValue);
+      removeTaskCreatorDiv(div);
     }
   });
 };

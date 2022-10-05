@@ -1,27 +1,24 @@
-import { removeTaskCreatorDiv } from './removetaskcreatordiv.mjs';
 import { removeTask } from './removetask.mjs';
 import { checklistTask } from './checklist.mjs';
 import { pages } from './pages.mjs';
 import { storeTaskToPage, updateTask } from './store.mjs';
 import { editTask } from './edittask.mjs';
 
-export const addTask = (taskListDiv, taskCreatorDiv, inputValue) => {
+export const addTask = (taskListDiv, inputValue) => {
   const newTask = document.createElement('div');
   newTask.classList.add('task');
 
   taskListDiv.appendChild(newTask);
 
-  createChecklistButton(newTask, inputValue);
+  createChecklistButton(newTask);
   createTaskText(newTask, inputValue);
   createEditTaskBtn(newTask);
-  createRemoveButton(newTask);
-
-  removeTaskCreatorDiv(taskCreatorDiv);
+  createRemoveButton(newTask, inputValue);
 
   getCurrentActiveButton(taskListDiv, inputValue, newTask);
 };
 
-const createChecklistButton = (task, inputValue) => {
+const createChecklistButton = (task) => {
   const checklistBtn = document.createElement('button');
   checklistBtn.classList.add('btn-checklist');
   checklistBtn.value = false;
@@ -50,7 +47,7 @@ const createEditTaskBtn = (task) => {
   editTask(editTaskBtn, task);
 };
 
-const createRemoveButton = (task) => {
+const createRemoveButton = (task, inputValue) => {
   const iconRemove = document.createElement('img');
   iconRemove.src = '/dist/style/images/remove.svg';
 
@@ -61,7 +58,7 @@ const createRemoveButton = (task) => {
 
   removeBtn.appendChild(iconRemove);
 
-  removeBtn.addEventListener('click', () => removeTask(task));
+  removeBtn.addEventListener('click', () => removeTask(task, inputValue));
 };
 
 const getCurrentActiveButton = (taskListDiv, inputValue, task) => {
@@ -79,10 +76,11 @@ const getCurrentActiveButton = (taskListDiv, inputValue, task) => {
 const getCurrentPage = (currentActiveButton, inputValue, task) => {
   const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
   const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
-  
-  storeTaskToPage(currPage, false, inputValue);
-  
+
+  if (currPage.list.find((task) => task.text === inputValue) === undefined) {
+    storeTaskToPage(currPage, false, inputValue);
+  }
   const checklistBtn = task.firstChild;
 
-  checklistTask(checklistBtn, inputValue, currPage)
+  checklistTask(checklistBtn, inputValue, currPage);
 };

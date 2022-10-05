@@ -1,5 +1,7 @@
 import { createTaskListDiv } from './tasklistdiv.mjs';
 import { pages } from './pages.mjs';
+import { addTask } from './addtask.mjs';
+import { createTaskCreator } from './taskcreator.mjs';
 
 export const createContent = (currentActiveButton, main) => {
   const content = document.createElement('div');
@@ -11,6 +13,7 @@ export const createContent = (currentActiveButton, main) => {
 
   createParaProjectName(content, currPage);
   createTaskListDiv(content);
+  createTasks(content, currPage);
 };
 
 const createParaProjectName = (content, currPage) => {
@@ -20,4 +23,12 @@ const createParaProjectName = (content, currPage) => {
   paraProjectName.textContent = projectName;
   paraProjectName.classList.add('bigtext');
   content.appendChild(paraProjectName);
+};
+
+export const createTasks = (content, currPage) => {
+  const taskListDiv = content.lastChild;
+  const projectCreator = taskListDiv.firstChild;
+  currPage.list.forEach((task) => addTask(taskListDiv, task.text));
+  projectCreator.remove();
+  createTaskCreator(taskListDiv);
 };

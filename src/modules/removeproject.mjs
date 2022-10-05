@@ -11,7 +11,6 @@ export const removeProject = (project) => {
   );
 
   pages.splice(indexOfObject, 1);
-  console.log(pages);
 };
 
 const goToDefaultPage = (project) => {
