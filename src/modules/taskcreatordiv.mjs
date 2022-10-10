@@ -1,20 +1,20 @@
 import { removeTaskCreatorDiv } from './removetaskcreatordiv.mjs';
 import { addTask } from './addtask.mjs';
 
-export const createTaskCreatorDiv = (taskCreator, taskListDiv) => {
+export const createTaskCreatorDiv = (taskCreator, taskListDiv, currentPage) => {
   taskCreator.addEventListener('click', () => {
     taskCreator.remove();
-    createDiv(taskListDiv);
+    createDiv(taskListDiv, currentPage);
   });
 };
 
-const createDiv = (taskListDiv) => {
+const createDiv = (taskListDiv, currentPage) => {
   const div = document.createElement('div');
   div.classList.add('wrapper-taskcreator');
   taskListDiv.appendChild(div);
 
   createInput(div);
-  createWrapper(div, taskListDiv);
+  createWrapper(div, taskListDiv, currentPage);
 };
 
 const createInput = (div) => {
@@ -24,16 +24,16 @@ const createInput = (div) => {
   div.appendChild(input);
 };
 
-const createWrapper = (div, taskListDiv) => {
+const createWrapper = (div, taskListDiv, currentPage) => {
   const wrapper = document.createElement('div');
   wrapper.classList.add('wrapper-btns-taskcreator');
   div.appendChild(wrapper);
 
-  createAddButton(wrapper, div, taskListDiv);
+  createAddButton(wrapper, div, taskListDiv, currentPage);
   createCloseButton(wrapper, div);
 };
 
-const createAddButton = (wrapper, div, taskListDiv) => {
+const createAddButton = (wrapper, div, taskListDiv, currentPage) => {
   const buttonAdder = document.createElement('button');
   buttonAdder.classList.add('btn-adder-taskcreator');
   buttonAdder.textContent = 'Add';
@@ -42,10 +42,14 @@ const createAddButton = (wrapper, div, taskListDiv) => {
 
   buttonAdder.addEventListener('click', () => {
     let inputValue = div.firstChild.value;
+    let availableName = currentPage.list.find(
+      (task) => task.text === inputValue
+    );
 
-    if (inputValue.length !== 0) {
+    if (inputValue.length !== 0 && availableName === undefined) {
       addTask(taskListDiv, inputValue);
-      removeTaskCreatorDiv(div);
+    } else {
+      alert('already exist name');
     }
   });
 };

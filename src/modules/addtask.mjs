@@ -1,5 +1,6 @@
 import { removeTask } from './removetask.mjs';
 import { checklistTask } from './checklist.mjs';
+import { removeTaskCreatorDiv } from './removetaskcreatordiv.mjs';
 import { pages } from './pages.mjs';
 import { storeTaskToPage, updateTask } from './store.mjs';
 import { editTask } from './edittask.mjs';
@@ -16,6 +17,13 @@ export const addTask = (taskListDiv, inputValue) => {
   createRemoveButton(newTask, inputValue);
 
   getCurrentActiveButton(taskListDiv, inputValue, newTask);
+
+  const everyChildElements = taskListDiv.childNodes;
+  everyChildElements.forEach((element) => {
+    if (element.classList.contains('wrapper-taskcreator')) {
+      removeTaskCreatorDiv(element);
+    }
+  });
 };
 
 const createChecklistButton = (task) => {

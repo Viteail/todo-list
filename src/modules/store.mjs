@@ -12,10 +12,11 @@ export const storeTaskToPage = (page, checklist, task) => {
     checklist,
     text: task,
   });
-  console.log(page);
 };
 
 export const updateTask = (task, checklistBtnValue) => {
   task.checklist = checklistBtnValue;
   console.log(task);
 };
+
+export let currPage = [];

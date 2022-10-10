@@ -1,4 +1,5 @@
 import { createTaskCreatorDiv } from './taskcreatordiv.mjs';
+import { pages } from './pages.mjs';
 
 export const createTaskCreator = (taskListDiv) => {
   const iconPlus = document.createElement('img');
@@ -12,5 +13,24 @@ export const createTaskCreator = (taskListDiv) => {
 
   taskCreator.appendChild(iconPlus);
 
-  createTaskCreatorDiv(taskCreator, taskListDiv);
+  getCurrentActiveButton(taskCreator, taskListDiv);
 };
+
+const getCurrentActiveButton = (taskCreator, taskListDiv) => {
+  const content = taskListDiv.parentElement;
+  const main = content.parentElement;
+  const sidebar = main.firstChild;
+  const everyChildElements = sidebar.childNodes;
+  everyChildElements.forEach((element) => {
+    if (element.classList.contains('active')) {
+      getCurrentPage(element, taskCreator, taskListDiv)
+    }
+  });
+};
+
+const getCurrentPage = (currentActiveButton, taskCreator, taskListDiv) => {
+  const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
+  const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
+
+  createTaskCreatorDiv(taskCreator, taskListDiv, currPage);
+}
