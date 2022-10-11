@@ -48,6 +48,8 @@ const createAddButton = (wrapper, div, taskListDiv, currentPage) => {
 
     if (inputValue.length !== 0 && availableName === undefined) {
       addTask(taskListDiv, inputValue);
+    } else if (inputValue.length === 0) {
+      alert('Enter a name');
     } else {
       alert('already exist name');
     }

@@ -45,6 +45,8 @@ const createAddButton = (wrapper, div, projectCreator, sidebar) => {
 
     if (inputValue.length !== 0 && availableName === undefined) {
       addProject(sidebar, inputValue, div, projectCreator);
+    } else if (inputValue.length === 0) {
+      alert('Enter a name');
     } else {
       alert('Already exist name');
     }
