@@ -29,7 +29,6 @@ export const addTask = (taskListDiv, inputValue) => {
 const createChecklistButton = (task) => {
   const checklistBtn = document.createElement('button');
   checklistBtn.classList.add('btn-checklist');
-  checklistBtn.value = false;
 
   task.appendChild(checklistBtn);
 };
@@ -86,7 +85,7 @@ const getCurrentPage = (currentActiveButton, inputValue, task) => {
   const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
 
   if (currPage.list.find((task) => task.text === inputValue) === undefined) {
-    storeTaskToPage(currPage, false, inputValue);
+    storeTaskToPage(currPage, 'notchecked', inputValue);
   }
   const checklistBtn = task.firstChild;
 
