@@ -35,7 +35,7 @@ body {
 #wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .header {
@@ -50,7 +50,7 @@ body {
 
 .main {
   display: flex;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .sidebar {
