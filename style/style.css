@@ -99,6 +99,7 @@ body {
   width: 100%;
   margin: 0px auto;
   margin-top: 20px;
+  padding: 20px;
 }
 
 .content > p.bigtext {
@@ -309,4 +310,13 @@ input:focus {
 
 .btn-edit-task > img {
   width: 24px;
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+  }
 }
