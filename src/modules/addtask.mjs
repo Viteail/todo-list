@@ -50,8 +50,6 @@ const createEditTaskBtn = (task) => {
   task.appendChild(editTaskBtn);
 
   editTaskBtn.appendChild(iconEdit);
-
-  editTask(editTaskBtn, task);
 };
 
 const createRemoveButton = (task, inputValue) => {
@@ -88,6 +86,10 @@ const getCurrentPage = (currentActiveButton, inputValue, task) => {
     storeTaskToPage(currPage, 'notchecked', inputValue);
   }
   const checklistBtn = task.firstChild;
+  checklistTask(checklistBtn, task, currPage);
 
-  checklistTask(checklistBtn, inputValue, currPage);
+  const editTaskBtn = task.childNodes[2];
+  editTask(editTaskBtn, task, currPage);
+
+  console.log(pages);
 };
