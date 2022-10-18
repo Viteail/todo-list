@@ -1,12 +1,32 @@
 import { updateTask } from './store.mjs';
 
 export const editTask = (editTaskBtn, task, currPage) => {
+  const taskList = task.parentElement;
+
   editTaskBtn.addEventListener('click', () => {
-    const everyChildElements = task.childNodes;
-    everyChildElements.forEach((element) => (element.style.display = 'none'));
-    task.style.flexDirection = 'column';
-    createInput(task);
-    createBtnWrapper(task, everyChildElements, currPage);
+    let taskEditState = undefined;
+
+    taskList.childNodes.forEach((element) => {
+      if (element.style.flexDirection === 'column') {
+        taskEditState = element;
+        console.log('1');
+      }
+    });
+
+    const createEditContent = (task, currPage) => {
+      const everyChildElements = task.childNodes;
+      everyChildElements.forEach((element) => (element.style.display = 'none'));
+      task.style.flexDirection = 'column';
+      createInput(task);
+      createBtnWrapper(task, everyChildElements, currPage);
+    };
+
+    if (taskEditState === undefined) {
+      createEditContent(task, currPage);
+    } else {
+      displayTask(taskEditState.childNodes, taskEditState);
+      createEditContent(task, currPage);
+    }
   });
 };
 
@@ -50,10 +70,6 @@ const createEditButton = (args) => {
       inputEditValue.length !== 0 &&
       currPage.list.find((task) => task.text === inputEditValue) === undefined
     ) {
-      inputEdit.remove();
-      btnWrapper.remove();
-
-      console.log(checklistBtn.value);
       updateTask(
         currPage.list.find((task) => task.text === taskText.textContent),
         checklistBtn.value,
@@ -75,16 +91,18 @@ const createCancelButton = (btnWrapper, task, everyChildElements) => {
   cancelButton.textContent = 'Cancel';
   btnWrapper.appendChild(cancelButton);
 
-  const inputEdit = everyChildElements[4];
-
   cancelButton.addEventListener('click', () => {
-    inputEdit.remove();
-    btnWrapper.remove();
     displayTask(everyChildElements, task);
   });
 };
 
 const displayTask = (everyChildElements, task) => {
+  const inputEdit = everyChildElements[4];
+  const btnWrapper = task.lastChild;
+
+  inputEdit.remove();
+  btnWrapper.remove();
+
   task.style.flexDirection = 'row';
   everyChildElements.forEach((element) => {
     element.style.display = 'flex';
