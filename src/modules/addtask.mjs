@@ -79,8 +79,7 @@ const getCurrentActiveButton = (taskListDiv, inputValue, task) => {
 };
 
 const getCurrentPage = (currentActiveButton, inputValue, task) => {
-  const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
-  const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
+  const currPage = pages.find((page) => page.id === currentActiveButton.textContent);
 
   if (currPage.list.find((task) => task.text === inputValue) === undefined) {
     storeTaskToPage(currPage, 'notchecked', inputValue);
@@ -90,6 +89,4 @@ const getCurrentPage = (currentActiveButton, inputValue, task) => {
 
   const editTaskBtn = task.childNodes[2];
   editTask(editTaskBtn, task, currPage);
-
-  console.log(pages);
 };

@@ -21,12 +21,10 @@ const getCurrentActiveButton = (task, inputValue) => {
 };
 
 const getCurrentPage = (currentActiveButton, task, inputValue) => {
-  const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
-  const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
+  const currPage = pages.find((page) => page.id === currentActiveButton.textContent);
   const list = currPage.list;
 
   const indexOfObject = list.findIndex((task) => task.text === inputValue);
 
   list.splice(indexOfObject, 1);
-  console.log(currPage);
 };

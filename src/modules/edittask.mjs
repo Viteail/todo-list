@@ -9,7 +9,6 @@ export const editTask = (editTaskBtn, task, currPage) => {
     taskList.childNodes.forEach((element) => {
       if (element.style.flexDirection === 'column') {
         taskEditState = element;
-        console.log('1');
       }
     });
 

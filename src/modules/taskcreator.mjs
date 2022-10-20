@@ -29,8 +29,7 @@ const getCurrentActiveButton = (taskCreator, taskListDiv) => {
 };
 
 const getCurrentPage = (currentActiveButton, taskCreator, taskListDiv) => {
-  const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
-  const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
+  const currPage = pages.find((page) => page.id === currentActiveButton.textContent);
 
   createTaskCreatorDiv(taskCreator, taskListDiv, currPage);
 }

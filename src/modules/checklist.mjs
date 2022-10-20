@@ -13,8 +13,6 @@ export const checklistTask = (checklistBtn, task, currPage) => {
     checklistBtn,
   });
 
-  console.log(checklistBtn.value)
-
   checklistBtn.addEventListener('click', () => {
     if (checklistBtn.firstChild === null) {
       checklistBtn.appendChild(iconCheck);

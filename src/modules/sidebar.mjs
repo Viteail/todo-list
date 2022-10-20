@@ -27,9 +27,9 @@ const createSidebarButtons = (sidebar, main) => {
   buttonWeek.appendChild(iconCalendarWeek);
 
   sidebar.appendChild(buttonToday);
-  storeToPages(buttonToday.className, buttonToday.textContent);
+  storeToPages(buttonToday.textContent, buttonToday.textContent);
   sidebar.appendChild(buttonWeek);
-  storeToPages(buttonWeek.className, buttonWeek.textContent);
+  storeToPages(buttonWeek.textContent, buttonWeek.textContent);
 
   createParaProject(sidebar);
   createProjectCreator(sidebar);

@@ -8,9 +8,9 @@ export const createContent = (currentActiveButton, main) => {
   content.classList.add('content');
   main.appendChild(content);
 
-  const firstClassOfCurrBtn = currentActiveButton.className.split(' ')[0];
-  const currPage = pages.find((page) => page.id === firstClassOfCurrBtn);
-
+  const currPage = pages.find(
+    (page) => page.id === currentActiveButton.textContent
+  );
   createParaProjectName(content, currPage);
   createTaskListDiv(content);
   createTasks(content, currPage);
@@ -26,9 +26,11 @@ const createParaProjectName = (content, currPage) => {
 };
 
 export const createTasks = (content, currPage) => {
-  const taskListDiv = content.lastChild;
-  const projectCreator = taskListDiv.firstChild;
-  currPage.list.forEach((task) => addTask(taskListDiv, task.text));
-  projectCreator.remove();
-  createTaskCreator(taskListDiv);
+  if (currPage.list.length !== 0) {
+    const taskListDiv = content.lastChild;
+    const projectCreator = taskListDiv.firstChild;
+    currPage.list.forEach((task) => addTask(taskListDiv, task.text));
+    projectCreator.remove();
+    createTaskCreator(taskListDiv);
+  }
 };

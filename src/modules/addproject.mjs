@@ -5,7 +5,7 @@ import { storeToPages } from './store.mjs';
 export const addProject = (sidebar, inputValue, div, projectCreator) => {
   const newProject = document.createElement('button');
   newProject.style.flexDirection = 'row';
-  newProject.classList.add(`${inputValue.replace(/\s+/g, '')}`, 'project');
+  newProject.classList.add('project');
   newProject.textContent = `${inputValue}`;
   sidebar.appendChild(newProject);
 
@@ -13,7 +13,7 @@ export const addProject = (sidebar, inputValue, div, projectCreator) => {
 
   removeProjectCreatorDiv(projectCreator, div);
 
-  storeToPages(newProject.className, newProject.textContent)
+  storeToPages(newProject.textContent, newProject.textContent)
 };
 
 const createRemoveButton = (newProject) => {

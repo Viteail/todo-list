@@ -7,7 +7,7 @@ export const removeProject = (project) => {
   project.remove();
 
   const indexOfObject = pages.findIndex(
-    (page) => page.id === `${project.className.split(' ')[0]}`
+    (page) => page.id === project.textContent
   );
 
   pages.splice(indexOfObject, 1);
@@ -18,6 +18,7 @@ const goToDefaultPage = (project) => {
   const main = sidebar.parentElement;
   const todayBtn = sidebar.firstChild;
   if (project.classList.contains('active')) {
+    project.classList.remove('active')
     todayBtn.classList.add('active');
     removeContent(main);
     getCurrentActiveButton(todayBtn, main);
