@@ -1,6 +1,8 @@
 import { toggleButton } from './togglebutton.mjs';
 import { createProjectCreator } from './projectcreator.mjs';
 import { storeToPages } from './store.mjs';
+import { pages } from './pages.mjs';
+import { addProject } from './addproject.mjs';
 
 export const createSidebar = (main) => {
   const sidebar = document.createElement('div');
@@ -27,12 +29,29 @@ const createSidebarButtons = (sidebar, main) => {
   buttonWeek.appendChild(iconCalendarWeek);
 
   sidebar.appendChild(buttonToday);
-  storeToPages(buttonToday.textContent, buttonToday.textContent);
   sidebar.appendChild(buttonWeek);
-  storeToPages(buttonWeek.textContent, buttonWeek.textContent);
 
   createParaProject(sidebar);
   createProjectCreator(sidebar);
+
+  if (localStorage.length !== 0) {
+    pages = JSON.parse(localStorage.getItem('pages'));
+    console.log(pages);
+
+    pages.forEach((page) => {
+      if (page.id === 'Today' || page.id === 'Week') {
+        return;
+      } else {
+        createPages(sidebar, page);
+      }
+    });
+  }
+
+  if (pages.length === 0) {
+    storeToPages(buttonToday.textContent, buttonToday.textContent);
+    storeToPages(buttonWeek.textContent, buttonWeek.textContent);
+  }
+
   toggleButton(sidebar, buttonToday, main);
 };
 
@@ -42,4 +61,10 @@ const createParaProject = (sidebar) => {
   paraProject.textContent = 'Projects';
 
   sidebar.appendChild(paraProject);
+};
+
+const createPages = (sidebar, page) => {
+  const taskCreatorDiv = sidebar.lastChild;
+
+  addProject(sidebar, page.name, taskCreatorDiv);
 };

@@ -1,8 +1,9 @@
 import { removeProjectCreatorDiv } from './removeprojectcreatordiv.mjs';
 import { removeProject } from './removeproject.mjs';
 import { storeToPages } from './store.mjs';
+import { pages } from './pages.mjs';
 
-export const addProject = (sidebar, inputValue, div, projectCreator) => {
+export const addProject = (sidebar, inputValue, div) => {
   const newProject = document.createElement('button');
   newProject.style.flexDirection = 'row';
   newProject.classList.add('project');
@@ -11,9 +12,11 @@ export const addProject = (sidebar, inputValue, div, projectCreator) => {
 
   createRemoveButton(newProject);
 
-  removeProjectCreatorDiv(projectCreator, div);
+  removeProjectCreatorDiv(div);
 
-  storeToPages(newProject.textContent, newProject.textContent)
+  if (pages.find((page) => page.id === newProject.textContent) === undefined) {
+    storeToPages(newProject.textContent, newProject.textContent);
+  }
 };
 
 const createRemoveButton = (newProject) => {

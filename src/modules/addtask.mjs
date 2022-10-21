@@ -79,7 +79,9 @@ const getCurrentActiveButton = (taskListDiv, inputValue, task) => {
 };
 
 const getCurrentPage = (currentActiveButton, inputValue, task) => {
-  const currPage = pages.find((page) => page.id === currentActiveButton.textContent);
+  const currPage = pages.find(
+    (page) => page.id === currentActiveButton.textContent
+  );
 
   if (currPage.list.find((task) => task.text === inputValue) === undefined) {
     storeTaskToPage(currPage, 'notchecked', inputValue);

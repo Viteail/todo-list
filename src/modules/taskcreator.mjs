@@ -23,13 +23,15 @@ const getCurrentActiveButton = (taskCreator, taskListDiv) => {
   const everyChildElements = sidebar.childNodes;
   everyChildElements.forEach((element) => {
     if (element.classList.contains('active')) {
-      getCurrentPage(element, taskCreator, taskListDiv)
+      getCurrentPage(element, taskCreator, taskListDiv);
     }
   });
 };
 
 const getCurrentPage = (currentActiveButton, taskCreator, taskListDiv) => {
-  const currPage = pages.find((page) => page.id === currentActiveButton.textContent);
+  const currPage = pages.find(
+    (page) => page.id === currentActiveButton.textContent
+  );
 
   createTaskCreatorDiv(taskCreator, taskListDiv, currPage);
-}
+};

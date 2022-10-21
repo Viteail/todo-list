@@ -1,1 +1,1 @@
-export const pages = [];
+export let pages = [];

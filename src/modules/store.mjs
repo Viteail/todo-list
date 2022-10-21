@@ -2,7 +2,7 @@ import { pages } from './pages.mjs';
 
 export const storeToPages = (id, name) => {
   pages.push({ id, name, list: [] });
-  console.log(pages);
+  storeToLocalStorage();
 };
 
 export const storeTaskToPage = (page, checklist, task) => {
@@ -11,13 +11,17 @@ export const storeTaskToPage = (page, checklist, task) => {
     checklist,
     text: task,
   });
-  console.log(list)
+  storeToLocalStorage();
 };
 
 export const updateTask = (task, checklistBtnValue, text) => {
   task.checklist = checklistBtnValue;
   task.text = text;
-  console.log(task);
+  storeToLocalStorage();
 };
 
 export let currPage = [];
+
+export const storeToLocalStorage = () => {
+  localStorage.setItem('pages', JSON.stringify(pages));
+};

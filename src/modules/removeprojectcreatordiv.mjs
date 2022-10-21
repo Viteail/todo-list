@@ -1,6 +1,6 @@
 import { createProjectCreator } from './projectcreator.mjs';
 
-export const removeProjectCreatorDiv = (projectCreator, div) => {
+export const removeProjectCreatorDiv = (div) => {
   createProjectCreator(div.parentElement);
   div.remove();
 };

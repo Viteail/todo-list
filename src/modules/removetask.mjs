@@ -21,7 +21,9 @@ const getCurrentActiveButton = (task, inputValue) => {
 };
 
 const getCurrentPage = (currentActiveButton, task, inputValue) => {
-  const currPage = pages.find((page) => page.id === currentActiveButton.textContent);
+  const currPage = pages.find(
+    (page) => page.id === currentActiveButton.textContent
+  );
   const list = currPage.list;
 
   const indexOfObject = list.findIndex((task) => task.text === inputValue);

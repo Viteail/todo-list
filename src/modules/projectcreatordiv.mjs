@@ -5,16 +5,16 @@ import { pages } from './pages.mjs';
 export const createProjectCreatorDiv = (projectCreator, sidebar) => {
   projectCreator.addEventListener('click', () => {
     projectCreator.remove();
-    createDiv(sidebar, projectCreator);
+    createDiv(sidebar);
   });
 };
 
-const createDiv = (sidebar, projectCreator) => {
+const createDiv = (sidebar) => {
   const div = document.createElement('div');
   div.classList.add('wrapper-projectcreator');
   sidebar.appendChild(div);
   createInput(div);
-  createWrapper(div, projectCreator, sidebar);
+  createWrapper(div, sidebar);
 };
 
 const createInput = (div) => {
@@ -25,15 +25,15 @@ const createInput = (div) => {
   div.appendChild(input);
 };
 
-const createWrapper = (div, projectCreator, sidebar) => {
+const createWrapper = (div, sidebar) => {
   const wrapper = document.createElement('div');
   wrapper.classList.add('wrapper-btns-projectcreator');
   div.appendChild(wrapper);
-  createAddButton(wrapper, div, projectCreator, sidebar);
-  createCloseButton(wrapper, div, projectCreator);
+  createAddButton(wrapper, div, sidebar);
+  createCloseButton(wrapper, div);
 };
 
-const createAddButton = (wrapper, div, projectCreator, sidebar) => {
+const createAddButton = (wrapper, div, sidebar) => {
   const buttonAdder = document.createElement('button');
   buttonAdder.classList.add('btn-adder-projectcreator');
   buttonAdder.textContent = 'Add';
@@ -44,7 +44,7 @@ const createAddButton = (wrapper, div, projectCreator, sidebar) => {
     let availableName = pages.find((page) => page.name === inputValue);
 
     if (inputValue.length !== 0 && availableName === undefined) {
-      addProject(sidebar, inputValue, div, projectCreator);
+      addProject(sidebar, inputValue, div);
     } else if (inputValue.length === 0) {
       alert('Enter a name');
     } else {
@@ -53,13 +53,11 @@ const createAddButton = (wrapper, div, projectCreator, sidebar) => {
   });
 };
 
-const createCloseButton = (wrapper, div, projectCreator) => {
+const createCloseButton = (wrapper, div) => {
   const buttonCloser = document.createElement('button');
   buttonCloser.classList.add('btn-closer-projectcreator');
   buttonCloser.textContent = 'Close';
   wrapper.appendChild(buttonCloser);
 
-  buttonCloser.addEventListener('click', () =>
-    removeProjectCreatorDiv(projectCreator, div)
-  );
+  buttonCloser.addEventListener('click', () => removeProjectCreatorDiv(div));
 };
