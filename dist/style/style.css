@@ -1,0 +1,351 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+:root {
+  --blue-color: #00457e;
+  --dark-blue-color: #02315e;
+  --light-blue-color: #2f70af;
+  --95-light-blue-color: #ebf2fa;
+  --90-light-blue-color: #d7e6f4;
+  --85-light-blue-color: #c3d9ef;
+  --80-light-blue-color: #aeccea;
+  --pink-color: #b9848c;
+  --purple-color: #806491;
+  --white-color: #ffffff;
+}
+
+@font-face {
+  font-family: Roboto-Regular;
+  src: url(fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: Roboto-Bold;
+  src: url(fonts/Roboto-Bold.ttf);
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  font-family: Roboto-Bold;
+  font-size: 1.8rem;
+  z-index: 1;
+  padding: 20px;
+  color: var(--white-color);
+  background-color: var(--light-blue-color);
+  box-shadow: 0px 2px 2px var(--blue-color);
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin: 0px;
+  width: 300px;
+  padding: 20px;
+  margin-right: 20px;
+  box-shadow: 2px 0px 4px var(--80-light-blue-color);
+  background-color: var(--95-light-blue-color);
+}
+
+.sidebar > button {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row-reverse;
+  font-family: Roboto-Regular;
+  cursor: pointer;
+  font-size: 1.1rem;
+  gap: 5px;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  width: 100%;
+  background-color: var(--95-light-blue-color);
+}
+
+.sidebar > button:hover,
+.sidebar > button:hover > button {
+  background-color: var(--90-light-blue-color);
+}
+
+.sidebar > button > img {
+  width: 24px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  margin: 0px auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.content > p.bigtext {
+  margin-right: auto;
+}
+
+.bigtext {
+  font-family: Roboto-Bold;
+  font-size: 1.5rem;
+}
+
+button.active,
+button.active > button {
+  font-weight: 800;
+  background-color: var(--85-light-blue-color);
+}
+
+.content > p {
+  margin: 0;
+}
+
+.wrapper-projectcreator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  width: 100%;
+  min-height: 75px;
+  border-radius: 5px;
+  background-color: var(--90-light-blue-color);
+}
+
+.input-projectcreator {
+  font-family: Roboto-Regular;
+  font-size: 1.1rem;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--80-light-blue-color);
+  background-color: var(--85-light-blue-color);
+}
+
+input:focus {
+  outline: none;
+}
+
+.wrapper-btns-projectcreator {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.wrapper-btns-projectcreator > button {
+  cursor: pointer;
+  border: none;
+  padding: 9.5px 0px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.btn-adder-projectcreator {
+  background-color: var(--80-light-blue-color);
+}
+
+.btn-remove-project {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+  margin-left: auto;
+  background-color: var(--95-light-blue-color);
+}
+
+.btn-remove-project > img {
+  width: 24px;
+}
+
+.tasklist {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.btn-taskcreator {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: row-reverse;
+  font-family: Roboto-Regular;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--white-color);
+}
+
+.btn-taskcreator:hover {
+  background-color: var(--90-light-blue-color);
+}
+
+.btn-taskcreator > img {
+  width: 24px;
+}
+
+.wrapper-taskcreator {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px var(--80-light-blue-color);
+  background-color: var(--90-light-blue-color);
+}
+
+.input-taskcreator {
+  padding: 16px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: 1px solid var(--80-light-blue-color);
+  background-color: var(--85-light-blue-color);
+}
+
+.wrapper-btns-taskcreator {
+  display: flex;
+  gap: 10px;
+}
+
+.wrapper-btns-taskcreator > button {
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 9.5px 0px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn-adder-taskcreator {
+  background-color: var(--80-light-blue-color);
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  transition: 200ms;
+  box-shadow: 2px 3px 5px var(--80-light-blue-color);
+  background-color: var(--90-light-blue-color);
+}
+
+.btn-checklist {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  cursor: pointer;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--80-light-blue-color);
+}
+
+.btn-checklist > img {
+  width: 24px;
+}
+
+.task-text {
+  font-family: Roboto-Regular;
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.btn-remove-task {
+  display: flex;
+  cursor: pointer;
+  padding: 0px;
+  height: 24px;
+  width: 24px;
+  margin-left: auto;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--90-light-blue-color);
+}
+
+.btn-remove-task > img {
+  width: 24px;
+}
+
+.btn-edit-task {
+  display: flex;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--90-light-blue-color);
+}
+
+.btn-edit-task > img {
+  width: 24px;
+}
+
+.input-edit {
+  font-size: 1.1rem;
+  width: 100%;
+  padding: 16px;
+  border-radius: 5px;
+  border: 1px solid var(--80-light-blue-color);
+  background-color: var(--85-light-blue-color);
+}
+
+.wrapper-btns-edit {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn-edit {
+  background-color: var(--80-light-blue-color);
+}
+
+.wrapper-btns-edit > button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  padding: 9.5px 0px;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+  }
+}
