@@ -2,7 +2,7 @@ import { updateTask } from './store.mjs';
 
 export const checklistTask = (checklistBtn, task, currPage) => {
   const iconCheck = document.createElement('img');
-  iconCheck.src = '/dist/style/images/check.svg';
+  iconCheck.src = 'style/images/check.svg';
 
   let inputValue = task.childNodes[1].textContent;
 

@@ -13,7 +13,7 @@ export const createSidebar = (main) => {
 };
 const createSidebarButtons = (sidebar, main) => {
   const iconCalendarToday = document.createElement('img');
-  iconCalendarToday.src = '../../dist/style/images/calendar-today.svg';
+  iconCalendarToday.src = 'style/images/calendar-today.svg';
 
   const buttonToday = document.createElement('button');
   buttonToday.classList.add('btn-today', 'project');
@@ -21,7 +21,7 @@ const createSidebarButtons = (sidebar, main) => {
   buttonToday.appendChild(iconCalendarToday);
 
   const iconCalendarWeek = document.createElement('img');
-  iconCalendarWeek.src = '../../dist/style/images/calendar-week.svg';
+  iconCalendarWeek.src = 'style/images/calendar-week.svg';
 
   const buttonWeek = document.createElement('button');
   buttonWeek.classList.add('btn-week', 'project');

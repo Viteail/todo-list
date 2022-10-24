@@ -3,7 +3,7 @@ import { pages } from './pages.mjs';
 
 export const createTaskCreator = (taskListDiv) => {
   const iconPlus = document.createElement('img');
-  iconPlus.src = '../../dist/style/images/plus.svg';
+  iconPlus.src = 'style/images/plus.svg';
 
   const taskCreator = document.createElement('button');
   taskCreator.classList.add('btn-taskcreator');

@@ -43,7 +43,7 @@ const createTaskText = (task, inputValue) => {
 
 const createEditTaskBtn = (task) => {
   const iconEdit = document.createElement('img');
-  iconEdit.src = '/dist/style/images/pencil.svg';
+  iconEdit.src = 'style/images/pencil.svg';
 
   const editTaskBtn = document.createElement('button');
   editTaskBtn.classList.add('btn-edit-task');
@@ -54,7 +54,7 @@ const createEditTaskBtn = (task) => {
 
 const createRemoveButton = (task, inputValue) => {
   const iconRemove = document.createElement('img');
-  iconRemove.src = '/dist/style/images/remove.svg';
+  iconRemove.src = 'style/images/remove.svg';
 
   const removeBtn = document.createElement('button');
   removeBtn.classList.add('btn-remove-task');

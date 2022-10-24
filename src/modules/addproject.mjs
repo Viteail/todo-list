@@ -21,7 +21,7 @@ export const addProject = (sidebar, inputValue, div) => {
 
 const createRemoveButton = (newProject) => {
   const iconRemove = document.createElement('img');
-  iconRemove.src = '/dist/style/images/remove.svg';
+  iconRemove.src = 'style/images/remove.svg';
 
   const removeBtn = document.createElement('button');
   removeBtn.classList.add('btn-remove-project');
