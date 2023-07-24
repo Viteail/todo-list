@@ -280,6 +280,7 @@ input:focus {
   font-family: Roboto-Regular;
   font-size: 1.1rem;
   width: 100%;
+  word-break: break-word;
 }
 
 .btn-remove-task {
